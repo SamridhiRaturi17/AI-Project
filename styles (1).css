@@ -1,0 +1,89 @@
+/* Particle Background (optional if you use JS particle plugin) */
+body {
+    background: linear-gradient(270deg, #1f1c2c, #928dab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Chat container upgrade */
+.chat-container {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+    backdrop-filter: blur(10px);
+}
+
+/* Bot Avatar */
+.message.bot::before {
+    content: url('https://cdn-icons-png.flaticon.com/512/4712/4712103.png'); /* replace with your avatar */
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    display: block;
+    align-self: flex-start;
+    border-radius: 50%;
+}
+
+/* User Message Bubble Enhancements */
+.message-content {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-content:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Typing animation using animated dots */
+.message.typing .message-content::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: currentColor;
+    border-radius: 50%;
+    animation: typingDots 1s infinite ease-in-out;
+}
+
+@keyframes typingDots {
+    0%, 100% { box-shadow: 0 0, 12px 0, 24px 0; }
+    33% { box-shadow: 0 -10px, 12px 0, 24px 0; }
+    66% { box-shadow: 0 0, 12px -10px, 24px 0; }
+}
+
+/* Send Button Glow */
+#send-button:hover {
+    background: #5a7de6;
+    box-shadow: 0 0 10px rgba(90, 125, 230, 0.6);
+}
+
+/* Responsive improvements */
+@media (max-width: 600px) {
+    .chat-container {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .chat-messages {
+        height: calc(100vh - 180px);
+    }
+
+    .message-content {
+        max-width: 85%;
+    }
+}
